@@ -1,0 +1,19 @@
+name: Suggest a use case
+description: Suggest a Discord workflow or improvement to the guide.
+title: "[Idea] "
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What would you like to accomplish?
+      description: "Describe the result for your community without private member or server information."
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Example request to the AI
+  - type: textarea
+    id: current
+    attributes:
+      label: What currently works or gets in the way?

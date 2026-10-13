@@ -1,0 +1,44 @@
+name: Connection help
+description: Report a problem connecting Qreate to an AI client.
+title: "[Connection] "
+body:
+  - type: markdown
+    attributes:
+      value: "Share only the minimum information needed. Do not include tokens, passwords, private server content or raw OAuth logs."
+  - type: dropdown
+    id: client
+    attributes:
+      label: AI client
+      options:
+        - Claude Code
+        - Claude web
+        - Claude Desktop
+        - ChatGPT
+        - Cursor
+        - Other MCP client
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Client version and operating system
+      placeholder: "Example: Claude Code version, macOS version"
+  - type: dropdown
+    id: step
+    attributes:
+      label: Which step failed?
+      options:
+        - Adding the endpoint
+        - OAuth sign-in or consent
+        - Discovering tools
+        - Listing my servers
+        - Another setup step
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: What happened?
+      description: "Include the expected result and a short sanitized error message."
+    validations:
+      required: true

@@ -1,4 +1,6 @@
-# Qreate MCP: build and run Discord communities with your AI
+# Qreate MCP: Discord MCP for Claude, ChatGPT and Cursor
+
+![Qreate MCP: your idea, your AI, your community](assets/qreate-mcp-cover.png)
 
 **Tell your AI what your Discord community needs. Qreate turns the idea into a plan you can review and launch.**
 
@@ -95,6 +97,14 @@ If custom MCP creation is restricted, check your account's developer access and 
 
 **Verification note:** these setup steps follow official client documentation and Qreate's public guide. The tool catalogue and capabilities were inspected through an existing authenticated Qreate connection on 13 October 2026. Fresh sign-in in each client has not been tested as part of this documentation review.
 
+## See the workflow
+
+1. **Describe the goal.** Qreate reads your server and prepares a supported setup plan.
+2. **Review the changes.** Inspect the stored plan and answer any missing details.
+3. **Approve to launch.** Qreate applies the approved plan and reports the result.
+
+[Explore Discord use cases](docs/use-cases.md) · [Latest documentation updates](CHANGELOG.md)
+
 ## Try an idea
 
 These are example requests, not preconfigured templates or guaranteed one-step outcomes. Qreate checks what your server and the current planner can support.
@@ -155,6 +165,10 @@ Connected AI clients cannot delete channels, roles, messages or records; ban, ki
 - **An action fails:** review Qreate's result and the relevant Discord channel permissions and role hierarchy.
 - **Message delivery is uncertain:** check the Discord channel before requesting another publish.
 - **Connection setup fails:** use the official client guide above and [Qreate support](https://discord.gg/qreate). A normal browser visit to the endpoint is not an MCP connection test.
+
+## Help shape the integration
+
+Tell us where installation gets stuck through [connection feedback](https://github.com/qreate-gg/qreate-mcp/issues/new/choose), or suggest a use case. If Qreate helps your community, star this repository so other server owners can find it.
 
 ## Learn more
 
