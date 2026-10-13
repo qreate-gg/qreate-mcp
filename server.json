@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.qreate-gg/qreate-mcp",
+  "title": "Qreate: Discord community management",
+  "description": "Build Discord communities with AI: roles, channels, modules, automations and reviewed announcements.",
+  "version": "0.1.0",
+  "websiteUrl": "https://github.com/qreate-gg/qreate-mcp",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.qreate.gg/mcp"
+    }
+  ]
+}
