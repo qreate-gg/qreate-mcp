@@ -1,0 +1,68 @@
+name: Publish Qreate to MCP Registry
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [server.json]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: qreate-mcp-registry
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'qreate-gg/qreate-mcp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout public integration metadata
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Check metadata
+        run: |
+          python3 - <<'PYTHON'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('server.json').read_text())
+          assert data['name'] == 'io.github.qreate-gg/qreate-mcp'
+          assert len(data['description']) <= 100
+          assert data['remotes'] == [{'type': 'streamable-http', 'url': 'https://mcp.qreate.gg/mcp'}]
+          assert not data.get('packages')
+          print('Hosted Qreate metadata checked:', data['version'])
+          PYTHON
+
+      - name: Install official publisher v1.8.1
+        run: |
+          curl -fLsS -o publisher.tar.gz https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz
+          echo 'a06c9096dcb9727c13555b6be26c7effa707b01f06a4c561ba7a3635443cf2cc  publisher.tar.gz' | sha256sum -c -
+          tar xzf publisher.tar.gz mcp-publisher
+
+      - name: Authenticate with repository identity
+        run: ./mcp-publisher login github-oidc
+
+      - name: Publish hosted server metadata
+        run: ./mcp-publisher publish
+
+      - name: Verify the published version
+        run: |
+          python3 - <<'PYTHON'
+          import json
+          import urllib.request
+          from pathlib import Path
+          wanted = json.loads(Path('server.json').read_text())
+          url = 'https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.qreate-gg/qreate-mcp'
+          with urllib.request.urlopen(url, timeout=30) as response:
+              payload = json.load(response)
+          matches = [row['server'] for row in payload.get('servers', []) if row.get('server', {}).get('name') == wanted['name'] and row.get('server', {}).get('version') == wanted['version']]
+          assert any(row.get('remotes') == wanted['remotes'] for row in matches), 'Published listing not found with the expected endpoint'
+          print('Verified:', wanted['name'], wanted['version'])
+          PYTHON
