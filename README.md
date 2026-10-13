@@ -115,6 +115,8 @@ See [more examples and execution flows](docs/examples.md).
 
 ## Supported MCP tools
 
+For clients and catalogues that use the official MCP Registry, Qreate is published as `io.github.qreate-gg/qreate-mcp`. [Read the registry entry](https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.qreate-gg/qreate-mcp). [server.json](server.json) supplies machine-readable discovery metadata; [INSTALL.md](INSTALL.md) supplies client setup instructions. Registry inclusion does not automatically install Qreate or authorize access.
+
 The currently exposed catalogue contains **20 tools**:
 
 | Workflow | Tools |
