@@ -6,6 +6,18 @@ Connect Claude or ChatGPT to [Qreate](https://qreate.gg), inspect your server, a
 
 [Get started with Qreate](https://qreate.gg) · [Documentation](https://docs.qreate.gg) · [Discord support](https://discord.gg/qreate)
 
+## Connect Qreate for me
+
+Send your AI assistant this repository link with:
+
+> Connect Qreate using https://github.com/qreate-gg/qreate-mcp/blob/main/INSTALL.md. Configure it for this client if you can, guide me through OAuth, then show my accessible Discord servers. Do not change my server during setup.
+
+An agent with access to your client configuration can prepare the connection. You complete sign-in and consent; clients without configuration access need a short manual setup.
+
+**[Add to Cursor](https://cursor.com/link/mcp/install?name=qreate&config=eyJ1cmwiOiJodHRwczovL21jcC5xcmVhdGUuZ2cvbWNwIn0%3D)** · **[Connect Claude](#claude-web-and-desktop)** · **[Connect ChatGPT](#chatgpt)** · **[Agent installation guide](INSTALL.md)**
+
+The Cursor link opens an installation prompt. Claude and ChatGPT links lead to their setup instructions, not automatic installers. All connections use OAuth.
+
 ## One connection, connected server workflows
 
 An idea often involves several parts of a Discord server. Qreate reads what already exists and prepares the work together, so your assistant can move from a request to a concrete, reviewable setup.
